@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Letter from './letter';
 
-const Word = ({id, value, currentWord, letters, setWords}) => {  
-
-    const handleDisabled = () => {
-        if (id !== currentWord){
-            return true
-        }
-    }  
+const Word = ({id, value, currentWord, setWords}) => {  
+    const letters = [
+        {id:1,value:""},
+        {id:2,value:""},
+        {id:3,value:""},
+        {id:4,value:""},
+        {id:5,value:""},
+    ]
 
     const handleSubmit = e => {
         e.preventDefault();
-        const {name, value} = e.target
-        setWords(word => ({...word, [name]:value}))
+        letters.forEach(l => {
+            value = value + l.value
+            console.log(value)
+            console.log(l)
+        })       
+
         console.log(value)
     }
 
@@ -23,11 +28,10 @@ const Word = ({id, value, currentWord, letters, setWords}) => {
                 key={letter.id}
                 id={letter.id}
                 value={letter.value}
-                disabled = {handleDisabled()}
             />
             )}
             <button className="btn btn-primary"> 
-                {id}
+                Submit
             </button>  
         </form> 
     );

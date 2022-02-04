@@ -2,8 +2,9 @@ import React from 'react';
 
 const Letter = props => {
     return (     
-    <input disabled={props.disabled}
+    <input
         maxLength= {1}
+        value = {props.value}
     />
   );
 }
